@@ -3,13 +3,14 @@ package escpaper
 import (
 	"strings"
 )
+
 func Escape(input string) string {
 	var escaped string
 	if strings.Contains(input, "\x1b") {
 		return input
 	}
 	if len(input) <= 1 {
-		return "" 
+		return ""
 	}
 	//escapin
 	for i := range input {
@@ -27,7 +28,7 @@ func Escape(input string) string {
 	}
 	return escaped
 }
-func SubString(input string, delim rune) string  {
+func SubString(input string, delim rune) string {
 	var next int
 	var returned string
 	if len(input) <= 1 {
@@ -36,7 +37,7 @@ func SubString(input string, delim rune) string  {
 	for {
 		next = strings.Index(input, string(delim))
 		if next == -1 {
-			return returned+input
+			return returned + input
 		}
 		escapedsection := Escape(string(input[:next+1]))
 		returned += escapedsection
@@ -44,7 +45,7 @@ func SubString(input string, delim rune) string  {
 		if escapedsection[len(escapedsection)-2] != '\x1b' {
 			break
 		}
-		
+
 	}
 	return returned
 
