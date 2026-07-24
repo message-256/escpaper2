@@ -1,13 +1,13 @@
-package escpaper_test
+package escpaper2_test
 
 import (
 	"fmt"
-	"github.com/message-256/escpaper2"
+	"github.com/message-256/escpaper22"
 	"testing"
 )
 
 func TestEscaper(t *testing.T) {
-	fmt.Println("escaper")
+	fmt.Println("escaper2")
 
 	var outputs = map[string]string{
 
@@ -19,7 +19,7 @@ func TestEscaper(t *testing.T) {
 		"\n":           "",
 	}
 	for input := range outputs {
-		ret := escpaper.Escape(input)
+		ret := escpaper2.Escape(input)
 		if ret != outputs[input] {
 			fmt.Printf("with input = %s,got = %q, want = %q\n", input, ret, outputs[input])
 			t.Errorf("ret not right value")
@@ -44,7 +44,7 @@ func TestDelim(t *testing.T) {
 		"\"":                        "",
 	}
 	for input := range outputs {
-		ret := escpaper.SubString(input, '"')
+		ret := escpaper2.SubString(input, '"')
 		if ret != outputs[input] {
 			fmt.Printf("with input = %s,got = %q, want = %q\n", input, ret, outputs[input])
 			t.Errorf("ret not right value")

@@ -1,4 +1,4 @@
-package escpaper
+package escpaper2
 
 import (
 	"strings"
