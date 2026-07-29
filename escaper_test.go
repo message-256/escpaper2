@@ -2,7 +2,7 @@ package escpaper2_test
 
 import (
 	"fmt"
-	"github.com/message-256/escpaper22"
+	"github.com/message-256/escpaper2"
 	"testing"
 )
 
@@ -42,6 +42,7 @@ func TestDelim(t *testing.T) {
 		`test`:                      "test",
 		"":                          "",
 		"\"":                        "",
+		"text\"}":		     "text\"",
 	}
 	for input := range outputs {
 		ret := escpaper2.SubString(input, '"')
