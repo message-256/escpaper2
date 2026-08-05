@@ -34,7 +34,7 @@ func SubString(input string, delim rune) string {
 	if len(input) <= 1 {
 		return ""
 	}
-	if input[0] == delim {
+	if rune(input[0]) == delim {
 		return input
 	}
 	for {
