@@ -42,7 +42,7 @@ func TestDelim(t *testing.T) {
 		`test`:                      "test",
 		"":                          "",
 		"\"":                        "",
-		"text\"}":		     "text\"",
+		"text\"}":                   "text\"",
 	}
 	for input := range outputs {
 		ret := escpaper2.SubString(input, '"')
@@ -51,5 +51,26 @@ func TestDelim(t *testing.T) {
 			t.Errorf("ret not right value")
 		}
 	}
+	var outputswihtdifferentdelim = map[string]string{
 
+		`test\\\/text/`:             "test\x1b\\\x1b/text/",
+		`test\\/`:                   "test\x1b\\/",
+		`\\test/`:                   "\x1b\\test/",
+		"test/":                     "test/",
+		`test\\\/text/,other stuff`: "test\x1b\\\x1b/text/",
+		`test\\/,other stuff`:       "test\x1b\\/",
+		`\\test/,other stuff`:       "\x1b\\test/",
+		"test/,others stuff":        "test/",
+		`test`:                      "test",
+		"":                          "",
+		"\"":                        "",
+		"text/}":                    "text/",
+	}
+	for input := range outputswihtdifferentdelim {
+		ret := escpaper2.SubString(input, '/')
+		if ret != outputswihtdifferentdelim[input] {
+			fmt.Printf("with input = %s,got = %q, want = %q\n", input, ret, outputswihtdifferentdelim[input])
+			t.Errorf("ret not right value")
+		}
+	}
 }
