@@ -35,7 +35,7 @@ func SubString(input string, delim rune) string {
 		return ""
 	}
 	if rune(input[0]) == delim {
-		return input
+		return ""
 	}
 	for {
 		next = strings.Index(input, string(delim))

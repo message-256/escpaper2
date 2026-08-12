@@ -43,7 +43,7 @@ func TestDelim(t *testing.T) {
 		"":                          "",
 		"\"":                        "",
 		"text\"}":                   "text\"",
-		`"other"`:		     `"other"`,
+		`"other"`:                   "",
 	}
 	for input := range outputs {
 		ret := escpaper2.SubString(input, '"')
